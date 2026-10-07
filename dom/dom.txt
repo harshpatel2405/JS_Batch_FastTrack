@@ -1,0 +1,83 @@
+DOM (Tree Structure)
+---
+Document Object Model
+
+
+1. Server fetch HTML FILE
+2. HTML File is converted into DOM Structure 
+3. css is parse and then applied 
+4. JS is parse and then applied 
+5. browser paints the output on the screen 
+
+Element -- only html tags 
+Node    -- everything (html tags , text , comments , whitespaces)  
+
+
+id       unique 
+class    group 
+elment 
+
+getElementbyId
+getElementbyClassName
+getElementbytagName
+
+querySelector("") -- only one occurence 
+querySelectorAll() -- all occurence 
+
+Selectors 
+attributes 
+createElement 
+append , appendChild , prepend , insertBefore , before , after
+
+insertAdjacentElement 
+
+
+
+Child 
+-----
+child nodes 
+children 
+lastElementChild 
+firstElementChild 
+lastChild 
+firstChild 
+
+Parent 
+------
+parentElement
+parentNode
+
+class 
+-----
+closest 
+matches 
+classList
+
+Classlist 
+---------
+add -- adds new element (if present or not )
+toggle -- (add if does not exists and remove if exists)
+contains -- checks a particular class exists or not 
+replace -- replace old class with a new Class
+remove -- removes a class 
+
+
+ARRAY 
+-----
+HTMLCollection vs NodeList 
+Execution Context — used by scope, hoisting, this, functions
+Call Stack — used by function execution and synchronous code
+Memory Heap — used by objects, arrays, functions, memory allocation
+Web APIs — used by setTimeout, DOM events, Fetch, etc.
+Event Loop — used to manage asynchronous JavaScript
+Microtask Queue — used by Promises, async/await, queueMicrotask
+Macrotask Queue — used by setTimeout, setInterval, DOM events
+Hoisting — used by var, let, const, functions
+Scope & Scope Chain — used to determine variable accessibility
+Closures — used by callbacks, private variables, React patterns
+Lexical Environment — used by scope and closures
+Events and its types 
+
+
+Event Listener 
+--------------

@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JavaScript Interview Mastery - 15 Day Tracker</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f6f9;
+        color: #1f2937;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+        background: #111827;
+        color: white;
+        padding: 25px 40px;
+    }
+
+    .header-container {
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    header h1 {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    header p {
+        color: #cbd5e1;
+        font-size: 15px;
+    }
+
+    /* ================= MAIN ================= */
+
+    .container {
+        max-width: 1400px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    /* ================= DASHBOARD ================= */
+
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-bottom: 25px;
+    }
+
+    .stat-card {
+        background: white;
+        border-radius: 12px;
+        padding: 22px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .stat-title {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 8px;
+    }
+
+    .stat-value {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /* ================= OVERALL PROGRESS ================= */
+
+    .overall-progress {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .progress-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-weight: bold;
+    }
+
+    .progress-container {
+        width: 100%;
+        height: 14px;
+        background: #e5e7eb;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #2563eb;
+        transition: 0.3s;
+    }
+
+    /* ================= CONTROLS ================= */
+
+    .controls {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+    }
+
+    .search {
+        flex: 1;
+        min-width: 250px;
+        padding: 12px 15px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    .filter-btn,
+    .reset-btn {
+        border: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .filter-btn {
+        background: #e5e7eb;
+        color: #374151;
+    }
+
+    .filter-btn.active {
+        background: #2563eb;
+        color: white;
+    }
+
+    .reset-btn {
+        background: #dc2626;
+        color: white;
+    }
+
+    /* ================= DAY CARD ================= */
+
+    .day-card {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 18px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+        border-left: 5px solid #d1d5db;
+    }
+
+    .day-card.current {
+        border-left-color: #2563eb;
+    }
+
+    .day-card.completed {
+        border-left-color: #16a34a;
+    }
+
+    .day-header {
+        padding: 20px 22px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .day-header:hover {
+        background: #f9fafb;
+    }
+
+    .day-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .day-number {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .current .day-number {
+        background: #2563eb;
+        color: white;
+    }
+
+    .completed .day-number {
+        background: #16a34a;
+        color: white;
+    }
+
+    .day-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .day-subtitle {
+        font-size: 13px;
+        color: #6b7280;
+    }
+
+    .day-status {
+        text-align: right;
+    }
+
+    .day-percent {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .small-progress {
+        width: 120px;
+        height: 7px;
+        background: #e5e7eb;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .small-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: #2563eb;
+    }
+
+    .completed .small-progress-bar {
+        background: #16a34a;
+    }
+
+    /* ================= TOPICS ================= */
+
+    .day-content {
+        display: none;
+        padding: 0 22px 22px;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .day-content.open {
+        display: block;
+    }
+
+    .topics {
+        margin-top: 20px;
+    }
+
+    .topic {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .topic:last-child {
+        border-bottom: none;
+    }
+
+    .topic input {
+        margin-top: 4px;
+        width: 17px;
+        height: 17px;
+        cursor: pointer;
+    }
+
+    .topic label {
+        cursor: pointer;
+        line-height: 1.5;
+    }
+
+    .topic.completed-topic label {
+        text-decoration: line-through;
+        color: #9ca3af;
+    }
+
+    /* ================= DAY ACTIONS ================= */
+
+    .day-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .complete-day-btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 7px;
+        background: #2563eb;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .complete-day-btn.completed-btn {
+        background: #16a34a;
+    }
+
+    /* ================= NOTES ================= */
+
+    .notes-section {
+        margin-top: 20px;
+    }
+
+    .notes-section h4 {
+        margin-bottom: 8px;
+    }
+
+    .notes {
+        width: 100%;
+        min-height: 100px;
+        resize: vertical;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-family: inherit;
+    }
+
+    /* ================= BADGES ================= */
+
+    .badge {
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: bold;
+        margin-left: 8px;
+    }
+
+    .current-badge {
+        background: #dbeafe;
+        color: #1d4ed8;
+    }
+
+    .completed-badge {
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    /* ================= EMPTY ================= */
+
+    .empty {
+        text-align: center;
+        padding: 40px;
+        color: #6b7280;
+        background: white;
+        border-radius: 12px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+        .dashboard {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+
+        header {
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 23px;
+        }
+
+        .dashboard {
+            grid-template-columns: 1fr;
+        }
+
+        .day-header {
+            align-items: flex-start;
+        }
+
+        .day-status {
+            display: none;
+        }
+
+        .day-number {
+            width: 40px;
+            height: 40px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+    <div class="header-container">
+        <h1>JavaScript Interview Mastery</h1>
+        <p>15-Day Interview + Practical JavaScript Course</p>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard">
+
+        <div class="stat-card">
+            <div class="stat-title">Total Days</div>
+            <div class="stat-value">15</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Days Completed</div>
+            <div class="stat-value" id="completedDays">0</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Topics Completed</div>
+            <div class="stat-value" id="completedTopics">0</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-title">Current Day</div>
+            <div class="stat-value" id="currentDay">1</div>
+        </div>
+
+    </section>
+
+
+    <!-- OVERALL PROGRESS -->
+
+    <section class="overall-progress">
+
+        <div class="progress-header">
+            <span>Overall Course Progress</span>
+            <span id="overallPercent">0%</span>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="overallBar"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CONTROLS -->
+
+    <section class="controls">
+
+        <input
+            type="text"
+            id="search"
+            class="search"
+            placeholder="Search topics...">
+
+        <button
+            class="filter-btn active"
+            onclick="setFilter('all', this)">
+            All
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('pending', this)">
+            Pending
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setFilter('completed', this)">
+            Completed
+        </button>
+
+        <button
+            class="reset-btn"
+            onclick="resetProgress()">
+            Reset Progress
+        </button>
+
+    </section>
+
+
+    <!-- COURSE -->
+
+    <section id="course"></section>
+
+</main>
+
+
+<script>
+
+    const course = [
+
+        {
+            day: 1,
+            title: "JavaScript Engine & Execution",
+            topics: [
+                "JavaScript Runtime",
+                "JavaScript Engine",
+                "Compilation vs Interpretation",
+                "Execution Context",
+                "Global Execution Context",
+                "Function Execution Context",
+                "Call Stack",
+                "Memory Heap",
+                "Creation Phase vs Execution Phase",
+                "Hoisting",
+                "var",
+                "let",
+                "const",
+                "Temporal Dead Zone",
+                "Strict Mode"
+            ]
+        },
+
+        {
+            day: 2,
+            title: "Data Types & Type Coercion",
+            topics: [
+                "Primitive Data Types",
+                "Reference Types",
+                "typeof",
+                "null",
+                "undefined",
+                "NaN",
+                "Infinity",
+                "Type Conversion",
+                "Type Coercion",
+                "Implicit Conversion",
+                "Explicit Conversion",
+                "Truthy and Falsy Values",
+                "== vs ===",
+                "Object.is()",
+                "NaN behavior",
+                "Type Coercion Output Questions"
+            ]
+        },
+
+        {
+            day: 3,
+            title: "Scope, Lexical Scope & Closures",
+            topics: [
+                "Global Scope",
+                "Function Scope",
+                "Block Scope",
+                "Lexical Scope",
+                "Scope Chain",
+                "Variable Lookup",
+                "Variable Shadowing",
+                "Illegal Shadowing",
+                "Closures",
+                "Practical Closures",
+                "Closures with Loops",
+                "Closures in Real Applications",
+                "Closure Interview Questions"
+            ]
+        },
+
+        {
+            day: 4,
+            title: "Functions Deep Dive",
+            topics: [
+                "Function Declaration",
+                "Function Expression",
+                "Anonymous Functions",
+                "Arrow Functions",
+                "Parameters vs Arguments",
+                "Default Parameters",
+                "Rest Parameters",
+                "Spread Operator",
+                "Callback Functions",
+                "Higher-Order Functions",
+                "First-Class Functions",
+                "IIFE",
+                "Function Returning Function"
+            ]
+        },
+
+        {
+            day: 5,
+            title: "this, call(), apply(), bind()",
+            topics: [
+                "this Keyword",
+                "Global Context",
+                "Object Method Context",
+                "Function Context",
+                "Constructor Context",
+                "this in Arrow Functions",
+                "this in Regular Functions",
+                "call()",
+                "apply()",
+                "bind()",
+                "Method Borrowing",
+                "Losing this",
+                "this Interview Problems"
+            ]
+        },
+
+        {
+            day: 6,
+            title: "Objects, Prototypes & Inheritance",
+            topics: [
+                "Object Creation",
+                "Object Properties",
+                "Computed Properties",
+                "Object Methods",
+                "Object.keys()",
+                "Object.values()",
+                "Object.entries()",
+                "Object.assign()",
+                "Shallow Copy",
+                "Deep Copy",
+                "Object.freeze()",
+                "Object.seal()",
+                "Prototype",
+                "Prototype Chain",
+                "__proto__",
+                "prototype",
+                "Object.create()",
+                "instanceof",
+                "new Keyword"
+            ]
+        },
+
+        {
+            day: 7,
+            title: "OOP in JavaScript",
+            topics: [
+                "Constructor Functions",
+                "Classes",
+                "Constructor",
+                "Instance Properties",
+                "Instance Methods",
+                "Static Methods",
+                "Getters",
+                "Setters",
+                "Encapsulation",
+                "Inheritance",
+                "extends",
+                "super",
+                "Method Overriding",
+                "Polymorphism",
+                "Abstraction Concepts",
+                "Composition vs Inheritance"
+            ]
+        },
+
+        {
+            day: 8,
+            title: "Arrays, Objects & Functional Programming",
+            topics: [
+                "forEach()",
+                "map()",
+                "filter()",
+                "reduce()",
+                "find()",
+                "findIndex()",
+                "some()",
+                "every()",
+                "sort()",
+                "reverse()",
+                "includes()",
+                "slice()",
+                "splice()",
+                "concat()",
+                "flat()",
+                "flatMap()",
+                "Method Chaining",
+                "Array/Object Transformation",
+                "Functional Programming Basics",
+                "Array Coding Questions"
+            ]
+        },
+
+        {
+            day: 9,
+            title: "Modern JavaScript / ES6+",
+            topics: [
+                "let and const",
+                "Template Literals",
+                "Destructuring",
+                "Spread Operator",
+                "Rest Operator",
+                "Default Parameters",
+                "Enhanced Object Literals",
+                "Optional Chaining",
+                "Nullish Coalescing",
+                "Logical Assignment Operators",
+                "Set",
+                "Map",
+                "WeakSet",
+                "WeakMap",
+                "Symbols",
+                "Iterators",
+                "Generators",
+                "JavaScript Modules",
+                "import / export"
+            ]
+        },
+
+        {
+            day: 10,
+            title: "Asynchronous JavaScript & Event Loop",
+            topics: [
+                "Synchronous JavaScript",
+                "Asynchronous JavaScript",
+                "Browser Web APIs",
+                "Call Stack",
+                "Web APIs",
+                "Callback Queue",
+                "Microtask Queue",
+                "Macrotask Queue",
+                "Event Loop",
+                "setTimeout()",
+                "setInterval()",
+                "Execution Order",
+                "Callback Hell",
+                "Event Loop Output Questions"
+            ]
+        },
+
+        {
+            day: 11,
+            title: "Promises & Async/Await",
+            topics: [
+                "Promise Concept",
+                "Promise States",
+                "Creating Promises",
+                "resolve",
+                "reject",
+                "then()",
+                "catch()",
+                "finally()",
+                "Promise Chaining",
+                "Error Propagation",
+                "async",
+                "await",
+                "try/catch",
+                "Promise.all()",
+                "Promise.allSettled()",
+                "Promise.race()",
+                "Promise.any()",
+                "Sequential Requests",
+                "Parallel Requests"
+            ]
+        },
+
+        {
+            day: 12,
+            title: "DOM & Browser Events",
+            topics: [
+                "DOM",
+                "DOM Tree",
+                "DOM Selection",
+                "querySelector()",
+                "querySelectorAll()",
+                "Creating Elements",
+                "Modifying Elements",
+                "Attributes",
+                "Classes",
+                "Styles",
+                "Creating Elements Dynamically",
+                "Removing Elements",
+                "Event Listeners",
+                "Event Object",
+                "Event Bubbling",
+                "Event Capturing",
+                "Event Delegation",
+                "preventDefault()",
+                "stopPropagation()",
+                "Forms",
+                "Form Validation"
+            ]
+        },
+
+        {
+            day: 13,
+            title: "Web APIs, Fetch & Storage",
+            topics: [
+                "Fetch API",
+                "HTTP Request",
+                "HTTP Response",
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE",
+                "Request Headers",
+                "HTTP Status Codes",
+                "JSON",
+                "JSON.stringify()",
+                "JSON.parse()",
+                "API Error Handling",
+                "Loading State",
+                "Success State",
+                "Error State",
+                "localStorage",
+                "sessionStorage",
+                "Cookies",
+                "Storage Comparison",
+                "CORS",
+                "Same-Origin Policy",
+                "Basic Web Security"
+            ]
+        },
+
+        {
+            day: 14,
+            title: "Advanced JavaScript Interview Concepts",
+            topics: [
+                "Debouncing",
+                "Throttling",
+                "Memoization",
+                "Currying",
+                "Function Composition",
+                "Recursion",
+                "Polyfills",
+                "Custom map()",
+                "Custom filter()",
+                "Custom reduce()",
+                "Custom bind()",
+                "Event Delegation",
+                "Garbage Collection",
+                "Memory Management",
+                "Memory Leaks",
+                "WeakMap",
+                "WeakSet",
+                "Optional Chaining",
+                "Defensive Programming"
+            ]
+        },
+
+        {
+            day: 15,
+            title: "Complete JavaScript Interview & Coding Round",
+            topics: [
+                "Rapid-Fire Theory Questions",
+                "Output-Based Questions",
+                "Hoisting Problems",
+                "Scope Problems",
+                "Closure Problems",
+                "this Problems",
+                "Prototype Problems",
+                "Event Loop Problems",
+                "Promise Problems",
+                "Array Coding",
+                "Object Coding",
+                "String Coding",
+                "Debugging Questions",
+                "Polyfill Questions",
+                "Practical Coding",
+                "Machine Coding",
+                "Mock Interview"
+            ]
+        }
+
+    ];
+
+
+    let progress =
+        JSON.parse(localStorage.getItem("jsCourseProgress")) || {};
+
+    let notes =
+        JSON.parse(localStorage.getItem("jsCourseNotes")) || {};
+
+    let filter = "all";
+
+
+    /* ================= RENDER COURSE ================= */
+
+    function renderCourse() {
+
+        const container = document.getElementById("course");
+
+        container.innerHTML = "";
+
+        const searchText =
+            document.getElementById("search").value.toLowerCase();
+
+        let visibleDays = 0;
+
+        course.forEach(day => {
+
+            const topicStates =
+                progress[day.day] || {};
+
+            const completedCount =
+                day.topics.filter((_, index) =>
+                    topicStates[index]
+                ).length;
+
+            const percentage =
+                Math.round(
+                    (completedCount / day.topics.length) * 100
+                );
+
+            const isCompleted =
+                completedCount === day.topics.length;
+
+            const isCurrent =
+                !isCompleted &&
+                day.day === getCurrentDay();
+
+
+            let filteredTopics =
+                day.topics
+                    .map((topic, index) => ({
+                        topic,
+                        index,
+                        completed: !!topicStates[index]
+                    }))
+                    .filter(item => {
+
+                        const matchesSearch =
+                            item.topic
+                                .toLowerCase()
+                                .includes(searchText);
+
+                        if (!matchesSearch)
+                            return false;
+
+                        if (filter === "completed")
+                            return item.completed;
+
+                        if (filter === "pending")
+                            return !item.completed;
+
+                        return true;
+                    });
+
+
+            if (
+                filteredTopics.length === 0 &&
+                searchText !== ""
+            ) {
+                return;
+            }
+
+
+            if (
+                filter === "completed" &&
+                completedCount === 0
+            ) {
+                return;
+            }
+
+            if (
+                filter === "pending" &&
+                completedCount === day.topics.length
+            ) {
+                return;
+            }
+
+
+            visibleDays++;
+
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "day-card" +
+                (isCurrent ? " current" : "") +
+                (isCompleted ? " completed" : "");
+
+
+            card.innerHTML = `
+
+                <div class="day-header"
+                     onclick="toggleDay(${day.day})">
+
+                    <div class="day-left">
+
+                        <div class="day-number">
+                            ${isCompleted ? "✓" : day.day}
+                        </div>
+
+                        <div>
+
+                            <div class="day-title">
+
+                                Day ${day.day} —
+                                ${day.title}
+
+                                ${
+                                    isCurrent
+                                        ? `<span class="badge current-badge">
+                                            CURRENT
+                                           </span>`
+                                        : ""
+                                }
+
+                                ${
+                                    isCompleted
+                                        ? `<span class="badge completed-badge">
+                                            COMPLETED
+                                           </span>`
+                                        : ""
+                                }
+
+                            </div>
+
+                            <div class="day-subtitle">
+                                ${completedCount}
+                                / ${day.topics.length}
+                                topics completed
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="day-status">
+
+                        <div class="day-percent">
+                            ${percentage}%
+                        </div>
+
+                        <div class="small-progress">
+                            <div
+                                class="small-progress-bar"
+                                style="width:${percentage}%">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="day-content-${day.day}"
+                    class="day-content">
+
+                    <div class="topics">
+
+                        ${filteredTopics.map(item => `
+
+                            <div class="
+                                topic
+                                ${item.completed
+                                    ? "completed-topic"
+                                    : ""}
+                            ">
+
+                                <input
+                                    type="checkbox"
+                                    id="topic-${day.day}-${item.index}"
+                                    ${
+                                        item.completed
+                                            ? "checked"
+                                            : ""
+                                    }
+                                    onchange="
+                                        toggleTopic(
+                                            ${day.day},
+                                            ${item.index}
+                                        )
+                                    "
+                                >
+
+                                <label
+                                    for="topic-${day.day}-${item.index}">
+                                    ${item.topic}
+                                </label>
+
+                            </div>
+
+                        `).join("")}
+
+                    </div>
+
+
+                    <div class="day-actions">
+
+                        <button
+                            class="
+                                complete-day-btn
+                                ${
+                                    isCompleted
+                                        ? "completed-btn"
+                                        : ""
+                                }
+                            "
+                            onclick="
+                                completeDay(
+                                    ${day.day},
+                                    event
+                                )
+                            ">
+
+                            ${
+                                isCompleted
+                                    ? "✓ Day Completed"
+                                    : "Mark Day Complete"
+                            }
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="notes-section">
+
+                        <h4>Teaching Notes</h4>
+
+                        <textarea
+                            class="notes"
+                            placeholder="
+                                Add your teaching notes,
+                                questions, doubts,
+                                homework, or important points...
+                            "
+                            onchange="
+                                saveNotes(
+                                    ${day.day},
+                                    this.value
+                                )
+                            "
+                        >${notes[day.day] || ""}</textarea>
+
+                    </div>
+
+                </div>
+            `;
+
+
+            container.appendChild(card);
+
+        });
+
+
+        if (visibleDays === 0) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    No topics found.
+                </div>
+            `;
+
+        }
+
+
+        updateDashboard();
+    }
+
+
+    /* ================= TOGGLE DAY ================= */
+
+    function toggleDay(dayNumber) {
+
+        const content =
+            document.getElementById(
+                `day-content-${dayNumber}`
+            );
+
+        content.classList.toggle("open");
+
+    }
+
+
+    /* ================= TOGGLE TOPIC ================= */
+
+    function toggleTopic(dayNumber, topicIndex) {
+
+        if (!progress[dayNumber])
+            progress[dayNumber] = {};
+
+        progress[dayNumber][topicIndex] =
+            !progress[dayNumber][topicIndex];
+
+
+        saveProgress();
+
+        renderCourse();
+
+        openDay(dayNumber);
+    }
+
+
+    /* ================= COMPLETE DAY ================= */
+
+    function completeDay(dayNumber, event) {
+
+        event.stopPropagation();
+
+        if (!progress[dayNumber])
+            progress[dayNumber] = {};
+
+        const day =
+            course.find(d => d.day === dayNumber);
+
+
+        const completed =
+            day.topics.every(
+                (_, index) =>
+                    progress[dayNumber][index]
+            );
+
+
+        if (completed) {
+
+            progress[dayNumber] = {};
+
+        } else {
+
+            day.topics.forEach((_, index) => {
+
+                progress[dayNumber][index] = true;
+
+            });
+
+        }
+
+
+        saveProgress();
+
+        renderCourse();
+
+        openDay(dayNumber);
+
+    }
+
+
+    /* ================= NOTES ================= */
+
+    function saveNotes(dayNumber, value) {
+
+        notes[dayNumber] = value;
+
+        localStorage.setItem(
+            "jsCourseNotes",
+            JSON.stringify(notes)
+        );
+
+    }
+
+
+    /* ================= CURRENT DAY ================= */
+
+    function getCurrentDay() {
+
+        for (const day of course) {
+
+            const states =
+                progress[day.day] || {};
+
+            const completed =
+                day.topics.every(
+                    (_, index) =>
+                        states[index]
+                );
+
+            if (!completed)
+                return day.day;
+
+        }
+
+        return 15;
+
+    }
+
+
+    /* ================= DASHBOARD ================= */
+
+    function updateDashboard() {
+
+        let totalTopics = 0;
+        let completedTopics = 0;
+        let completedDays = 0;
+
+
+        course.forEach(day => {
+
+            totalTopics += day.topics.length;
+
+            const states =
+                progress[day.day] || {};
+
+            const count =
+                day.topics.filter(
+                    (_, index) =>
+                        states[index]
+                ).length;
+
+            completedTopics += count;
+
+            if (count === day.topics.length)
+                completedDays++;
+
+        });
+
+
+        const percentage =
+            Math.round(
+                (completedTopics / totalTopics) * 100
+            );
+
+
+        document.getElementById(
+            "completedDays"
+        ).textContent = completedDays;
+
+
+        document.getElementById(
+            "completedTopics"
+        ).textContent =
+            `${completedTopics}/${totalTopics}`;
+
+
+        document.getElementById(
+            "currentDay"
+        ).textContent =
+            getCurrentDay();
+
+
+        document.getElementById(
+            "overallPercent"
+        ).textContent =
+            `${percentage}%`;
+
+
+        document.getElementById(
+            "overallBar"
+        ).style.width =
+            `${percentage}%`;
+
+    }
+
+
+    /* ================= FILTER ================= */
+
+    function setFilter(value, button) {
+
+        filter = value;
+
+
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+
+        button.classList.add("active");
+
+        renderCourse();
+
+    }
+
+
+    /* ================= SEARCH ================= */
+
+    document
+        .getElementById("search")
+        .addEventListener(
+            "input",
+            renderCourse
+        );
+
+
+    /* ================= RESET ================= */
+
+    function resetProgress() {
+
+        const confirmReset =
+            confirm(
+                "Are you sure you want to reset all course progress?"
+            );
+
+
+        if (!confirmReset)
+            return;
+
+
+        progress = {};
+        notes = {};
+
+        localStorage.removeItem(
+            "jsCourseProgress"
+        );
+
+        localStorage.removeItem(
+            "jsCourseNotes"
+        );
+
+        renderCourse();
+
+    }
+
+
+    /* ================= SAVE ================= */
+
+    function saveProgress() {
+
+        localStorage.setItem(
+            "jsCourseProgress",
+            JSON.stringify(progress)
+        );
+
+    }
+
+
+    /* ================= OPEN DAY ================= */
+
+    function openDay(dayNumber) {
+
+        setTimeout(() => {
+
+            const content =
+                document.getElementById(
+                    `day-content-${dayNumber}`
+                );
+
+            if (content)
+                content.classList.add("open");
+
+        }, 50);
+
+    }
+
+
+    /* ================= INITIALIZE ================= */
+
+    renderCourse();
+
+    openDay(getCurrentDay());
+
+</script>
+
+</body>
+
+</html>

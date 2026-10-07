@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>R1c1</td>
+            <td>R1c2</td>
+            <td>R1c3</td>
+        </tr>
+        <tr>
+            <td>R2c1</td>
+            <td>R2c2</td>
+            <td>R2c3</td>
+        </tr>
+        <tr>
+            <td>R3c1</td>
+            <td>R3c2</td>
+            <td>R3c3</td>
+        </tr>
+        <tr>
+            <td>R4c1</td>
+            <td>R4c2</td>
+            <td>R4c3</td>
+        </tr>
+    </table>
+
+    <script>
+        let table = document.querySelector("table")
+        table.setAttribute('border', '2')
+        table.setAttribute('cellpadding', '10')
+        table.setAttribute('cellspacing', '10')
+        console.log(table.getAttribute("align"))
+        table.setAttribute('align', 'center')
+
+        console.log(table.getAttribute("border"))
+        table.removeAttribute("align")
+        console.log(table.getAttribute("align"))
+    </script>
+</body>
+
+</html>

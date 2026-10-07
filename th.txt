@@ -1,0 +1,23 @@
+JS 
+--
+Functions 
+array -- methods 
+DOM 
+ASYNC JS -- callback , promise 
+closures 
+
+data ={
+    name :"harsh",
+    age :22,
+    password :"hjvdgcdw",
+}
+const {name , age , password} = data;
+
+
+{errors?.message}
+error > is message there 
+
+??
+
+?:
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="data1">
+        <!-- hello World -->
+        <h1>Heading 1 </h1>
+        <p>Heading 2</p>
+        <b>Heading 3</b>
+    </div>
+
+    <script>
+        let data1 = document.querySelector("#data1")
+
+        // nodes -- tags , text , comments and whitespaces , new lines 
+        console.log(data1.childNodes)
+
+        // element -- only html tags
+        console.log(data1.children)
+
+        console.log(data1.firstElementChild)
+        console.log(data1.firstChild)
+
+        console.log(data1.lastElementChild)
+        console.log(data1.lastChild)
+    </script>
+</body>
+
+</html>

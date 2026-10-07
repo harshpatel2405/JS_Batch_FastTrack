@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+              border: 3px solid rgb(0, 0, 0);
+            min-height: 50vh;
+            width: 70vw;
+        }
+        h3 {
+            border: 3px solid rgb(0, 0, 0);
+            height: 50px;
+            width: 450px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>this is demo para 1</p>
+        <p id="para2">this is demo para 2 </p>
+        <p>this is demo para 3</p>
+    </div>
+
+    <script>
+        let firstDiv = document.querySelector("div")
+
+        for (let i = 0; i < 5; i++) {
+
+            // new element creation 
+            let newElement = document.createElement("h3")
+
+            // console.log(newElement)
+            newElement.innerText = "This is the new element created..." + i
+            console.log(newElement)
+            firstDiv.appendChild(newElement)
+
+        }
+
+
+        // let newElement = document.createElement("h3")
+        // newElement.innerText = "Top Data"
+        // firstDiv.prepend(newElement)
+
+        // firstDiv.appendChild(newElement) // 1 node
+        // firstDiv.append("Hello this is normal text",newElement) // 1 node
+
+        // let obj = {
+        //     name: "harsh",
+        //     marks: 99,
+        // }
+        // console.log(obj)
+        // firstDiv.append(obj, newElement) // N node, with string and numbers as well as child
+
+        // let arr = [10,20,30,40]
+        // firstDiv.append(arr,newElement) // N node, with string and numbers as well as child 
+
+        let para2 = document.querySelector("#para2")
+         let newElement = document.createElement("h3")
+        newElement.innerText = "Inserted Before para2"
+        // firstDiv.insertBefore(newElement,para2)
+        // firstDiv.before(newElement)
+        // firstDiv.after(newElement)
+    </script
+</body>
+
+</html>

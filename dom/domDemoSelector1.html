@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>This is paragraph tag 1</p>
+        <p>This is paragraph tag 2</p>
+
+        <h1 class="heading">This is Heading 1</h1>
+        <h2 class="heading">This is Heading 2</h2>
+
+        <p id="bold">This is bold tag</p>
+        <br>
+
+        <span>This is log <sub>10</sub> = 1</span>
+    </div>
+
+    <script>
+        // console.log(document.getElementById("bold"))
+        // console.log(document.getElementsByClassName("heading")) // HTMLCollection
+        // console.log(document.getElementsByTagName("p")) // HTMLCollection
+
+        // console.log(document.querySelector("p"))
+        // console.log(document.querySelector("#bold"))
+        // console.log(document.querySelector(".heading"))
+
+        // console.log(document.querySelectorAll("p")) // nodelist
+        // console.log(document.querySelectorAll("#bold")) // nodelist
+        // console.log(document.querySelectorAll(".heading")) // nodelist
+
+        // let heading = document.querySelector(".heading")
+        // console.log(heading)
+        // console.log(heading.innerHTML) // read and write
+        // console.log(heading.innerText) // read and write
+        // console.log(heading.textContent) // read 
+
+
+        // let content = document.querySelector("span")
+        // console.log(content)
+        // console.log(content.innerHTML) // read and write)
+        // console.log(content.innerText) // read and write)
+        // console.log(content.textContent) // read -- reads hidden as well
+
+        let data = document.getElementById("bold")
+        // data.innerText = "<b>Bold tag is this</b>" //-- TRETAS TAG AS TEXT 
+        data.innerHTML = "<b>Bold tag is this</b>"// -- TREATS TAG AS TAG
+    </script>
+</body>
+
+</html>

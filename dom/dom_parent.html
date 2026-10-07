@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="data1">
+        <!-- hello World -->
+        <h1 id="da1">Heading 1 </h1>
+        <p id="da2">Heading 2</p>
+        <b id="da3">Heading 3</b>
+    </div>
+
+    <script>
+        let da1 = document.querySelector("#da1")
+        let da2 = document.querySelector("#da2")
+        let da3 = document.querySelector("#da3")
+
+        console.log(da1.parentElement)
+        console.log(da1.parentNode)
+        console.log(da2.parentElement)
+        console.log(da2.parentNode)
+        console.log(da3.parentElement)
+        console.log(da3.parentNode)
+
+
+        console.log(da2.nextElementSibling)
+        console.log(da2.nextSibling)
+        console.log(da2.previousElementSibling)
+        console.log(da2.previousSibling)
+    </script>
+</body>
+
+</html>
