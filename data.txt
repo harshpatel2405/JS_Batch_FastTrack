@@ -1,0 +1,85 @@
+Execution Context 
+-----------------
+1. Global Execution Context -- one per js run  
+2. Function Execution Context -- temp for every function 
+
+console.log("Hello")
+
+function demo1()
+{
+    demo2()
+    console.log("Demo1 Called")
+}
+
+function demo2()
+{
+    console.log("Demo2 Called")
+
+}
+demo1()
+
+console.log("World")
+
+Hello 
+World 
+Program called 
+
+
+Web API 
+-------
+setTimeout 
+setInterval 
+
+TASK QUEUE 
+
+
+EVENT LOOP 
+----------
+IT WILL CHECK WHETHER THE TASK IN TASK QUEUE CAN BE TRANBSFERRED TO CALL STACK OR NOT \
+
+Microtask Queue 
+PROMISE 
+ASYNC / AWAIT
+
+
+Macrotask/TASK Queue 
+WEB API 
+
+
+NORMAL -> MICRO -> MACRO 
+
+
+CONSOLE 1 
+PROMISE 1 
+setTimeout
+SETINTERVAL 
+PRIOMISE 2 
+CONSOLE 2
+PROMISE 3 
+CONSOLE 3
+
+console.log("CONSOLE 1");
+
+Promise.resolve().then(() => {
+    console.log("PROMISE 1");
+});
+
+setTimeout(() => {
+    console.log("setTimeout");
+}, 1000);
+
+setInterval(() => {
+    console.log("setInterval");
+}, 1000);
+
+Promise.resolve().then(() => {
+    console.log("PROMISE 2");
+});
+
+console.log("CONSOLE 2");
+
+Promise.resolve().then(() => {
+    console.log("PROMISE 3");
+});
+
+console.log("CONSOLE 3");

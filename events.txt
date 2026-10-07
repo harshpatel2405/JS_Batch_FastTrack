@@ -1,0 +1,894 @@
+JAVASCRIPT IMPORTANT EVENTS — COMPLETE NOTES
+
+==================================================
+1. click
+==================================================
+
+Work:
+Fires when the user clicks an element once.
+
+Code:
+button.addEventListener("click", function() {
+    console.log("Button clicked");
+});
+
+Layman Example:
+Like pressing a doorbell once.
+
+
+==================================================
+2. dblclick
+==================================================
+
+Work:
+Fires when the user double-clicks an element.
+
+Code:
+button.addEventListener("dblclick", function() {
+    console.log("Double clicked");
+});
+
+Layman Example:
+Double-clicking a file to open it.
+
+
+==================================================
+3. mousedown
+==================================================
+
+Work:
+Fires when the mouse button is pressed down.
+
+Code:
+button.addEventListener("mousedown", function() {
+    console.log("Mouse button pressed");
+});
+
+Layman Example:
+Pressing a doorbell but not releasing it yet.
+
+
+==================================================
+4. mouseup
+==================================================
+
+Work:
+Fires when the mouse button is released.
+
+Code:
+button.addEventListener("mouseup", function() {
+    console.log("Mouse button released");
+});
+
+Layman Example:
+Releasing the doorbell after pressing it.
+
+
+==================================================
+5. mouseenter
+==================================================
+
+Work:
+Fires when the mouse pointer enters an element.
+
+Code:
+box.addEventListener("mouseenter", function() {
+    console.log("Mouse entered");
+});
+
+Layman Example:
+Walking into a room.
+
+
+==================================================
+6. mouseleave
+==================================================
+
+Work:
+Fires when the mouse pointer leaves an element.
+
+Code:
+box.addEventListener("mouseleave", function() {
+    console.log("Mouse left");
+});
+
+Layman Example:
+Walking out of a room.
+
+
+==================================================
+7. mouseover
+==================================================
+
+Work:
+Fires when the mouse pointer moves onto an element or one of its descendants.
+
+Code:
+box.addEventListener("mouseover", function() {
+    console.log("Mouse over");
+});
+
+Layman Example:
+Moving your hand over a table and then over objects placed on the table.
+
+IMPORTANT:
+mouseover bubbles.
+
+
+==================================================
+8. mouseout
+==================================================
+
+Work:
+Fires when the mouse pointer leaves an element or moves to another element/descendant.
+
+Code:
+box.addEventListener("mouseout", function() {
+    console.log("Mouse out");
+});
+
+Layman Example:
+Moving your hand away from a table/object.
+
+IMPORTANT:
+mouseout bubbles.
+
+
+==================================================
+9. keydown
+==================================================
+
+Work:
+Fires when a keyboard key is pressed down.
+
+Code:
+document.addEventListener("keydown", function(event) {
+    console.log(event.key);
+});
+
+Layman Example:
+Pressing the "A" key.
+
+
+==================================================
+10. keyup
+==================================================
+
+Work:
+Fires when a keyboard key is released.
+
+Code:
+document.addEventListener("keyup", function(event) {
+    console.log(event.key);
+});
+
+Layman Example:
+Releasing the "A" key after pressing it.
+
+
+==================================================
+11. input
+==================================================
+
+Work:
+Fires whenever the value of an input changes while the user is entering data.
+
+Code:
+input.addEventListener("input", function(event) {
+    console.log(event.target.value);
+});
+
+Example:
+Typing:
+
+H
+Ha
+Har
+Hars
+Harsh
+
+The event can fire for every change.
+
+Layman Example:
+A teacher watching what a student writes character by character.
+
+
+==================================================
+12. change
+==================================================
+
+Work:
+Fires when the value/state of a form element changes and the change is committed.
+
+Code:
+select.addEventListener("change", function(event) {
+    console.log(event.target.value);
+});
+
+Layman Example:
+Selecting a different country from a dropdown.
+
+IMPORTANT:
+For text inputs, change usually fires after the user finishes editing
+(often when the input loses focus).
+
+For select, checkbox, and radio controls, it fires when the selection/state changes.
+
+
+==================================================
+13. submit
+==================================================
+
+Work:
+Fires when a form is submitted.
+
+Code:
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("Form submitted");
+});
+
+Layman Example:
+Clicking "Register" after filling a registration form.
+
+IMPORTANT:
+event.preventDefault()
+stops the browser's default form submission.
+
+
+==================================================
+14. focus
+==================================================
+
+Work:
+Fires when an element becomes active/focused.
+
+Code:
+input.addEventListener("focus", function() {
+    console.log("Input focused");
+});
+
+Layman Example:
+Clicking inside a text box and getting the blinking cursor.
+
+
+==================================================
+15. blur
+==================================================
+
+Work:
+Fires when an element loses focus.
+
+Code:
+input.addEventListener("blur", function() {
+    console.log("Input lost focus");
+});
+
+Layman Example:
+Clicking outside the text box after typing.
+
+IMPORTANT:
+focus and blur do NOT bubble.
+
+
+==================================================
+16. DOMContentLoaded
+==================================================
+
+Work:
+Fires when the HTML document has been completely parsed
+and the DOM has been created.
+
+Code:
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM is ready");
+});
+
+Layman Example:
+The building structure is ready, so workers can start working inside.
+
+IMPORTANT:
+It does not wait for all images and other external resources to finish loading.
+
+
+==================================================
+17. load
+==================================================
+
+Work:
+Fires when the page and its dependent resources have finished loading.
+
+Code:
+window.addEventListener("load", function() {
+    console.log("Everything loaded");
+});
+
+Layman Example:
+The building structure is ready AND furniture, electricity,
+equipment, etc. are also ready.
+
+IMPORTANT:
+load generally happens after DOMContentLoaded.
+
+
+==================================================
+18. scroll
+==================================================
+
+Work:
+Fires when the document or an element is scrolled.
+
+Code:
+window.addEventListener("scroll", function() {
+    console.log("Page scrolling");
+});
+
+Layman Example:
+Scrolling Instagram, YouTube, or a website up/down.
+
+
+==================================================
+19. resize
+==================================================
+
+Work:
+Fires when the browser window changes size.
+
+Code:
+window.addEventListener("resize", function() {
+    console.log("Window resized");
+});
+
+Layman Example:
+Making a browser window wider or smaller.
+
+
+==================================================
+20. copy
+==================================================
+
+Work:
+Fires when the user copies content.
+
+Code:
+document.addEventListener("copy", function() {
+    console.log("Content copied");
+});
+
+Layman Example:
+Selecting text and pressing Ctrl + C.
+
+
+==================================================
+21. paste
+==================================================
+
+Work:
+Fires when the user pastes content.
+
+Code:
+input.addEventListener("paste", function() {
+    console.log("Content pasted");
+});
+
+Layman Example:
+Pressing Ctrl + V inside a text box.
+
+
+==================================================
+22. dragstart
+==================================================
+
+Work:
+Fires when the user starts dragging an element.
+
+Code:
+box.addEventListener("dragstart", function() {
+    console.log("Dragging started");
+});
+
+Layman Example:
+Picking up a file and starting to drag it.
+
+
+==================================================
+23. dragover
+==================================================
+
+Work:
+Fires continuously while a dragged element is moving over
+a valid drop area.
+
+Code:
+dropArea.addEventListener("dragover", function(event) {
+    event.preventDefault();
+    console.log("Dragging over drop area");
+});
+
+IMPORTANT:
+preventDefault() is commonly required to allow dropping.
+
+
+==================================================
+24. drop
+==================================================
+
+Work:
+Fires when a dragged element is dropped.
+
+Code:
+dropArea.addEventListener("drop", function(event) {
+    event.preventDefault();
+    console.log("Dropped");
+});
+
+Layman Example:
+Dragging a file into a folder and releasing the mouse button.
+
+
+==================================================
+25. touchstart
+==================================================
+
+Work:
+Fires when the user touches the screen.
+
+Code:
+box.addEventListener("touchstart", function() {
+    console.log("Screen touched");
+});
+
+Layman Example:
+Putting your finger on a mobile screen.
+
+
+==================================================
+26. touchmove
+==================================================
+
+Work:
+Fires when the user's finger moves across the screen.
+
+Code:
+box.addEventListener("touchmove", function() {
+    console.log("Finger moving");
+});
+
+Layman Example:
+Swiping your finger across a phone screen.
+
+
+==================================================
+27. touchend
+==================================================
+
+Work:
+Fires when the user removes their finger from the screen.
+
+Code:
+box.addEventListener("touchend", function() {
+    console.log("Touch ended");
+});
+
+Layman Example:
+Lifting your finger after a swipe.
+
+
+==================================================
+QUICK REVISION
+==================================================
+
+MOUSE EVENTS:
+1. click
+2. dblclick
+3. mousedown
+4. mouseup
+5. mouseenter
+6. mouseleave
+7. mouseover
+8. mouseout
+
+KEYBOARD EVENTS:
+9. keydown
+10. keyup
+
+FORM EVENTS:
+11. input
+12. change
+13. submit
+14. focus
+15. blur
+
+BROWSER/PAGE EVENTS:
+16. DOMContentLoaded
+17. load
+18. scroll
+19. resize
+
+CLIPBOARD EVENTS:
+20. copy
+21. paste
+
+DRAG & DROP EVENTS:
+22. dragstart
+23. dragover
+24. drop
+
+TOUCH EVENTS:
+25. touchstart
+26. touchmove
+27. touchend
+
+
+==================================================
+INTERVIEW PRIORITY
+==================================================
+
+MUST KNOW:
+1. click
+2. keydown
+3. keyup
+4. input
+5. change
+6. submit
+7. focus
+8. blur
+9. DOMContentLoaded
+10. scroll
+
+SHOULD KNOW:
+11. dblclick
+12. mousedown
+13. mouseup
+14. mouseenter
+15. mouseleave
+16. mouseover
+17. mouseout
+18. load
+19. copy
+20. paste
+21. dragstart
+22. dragover
+23. drop
+
+BASIC AWARENESS:
+24. touchstart
+25. touchmove
+26. touchend
+
+
+==================================================
+IMPORTANT INTERVIEW DIFFERENCES
+==================================================
+
+click vs dblclick
+------------------
+click     = one click
+dblclick  = double click
+
+
+mousedown vs mouseup
+--------------------
+mousedown = mouse button pressed
+mouseup   = mouse button released
+
+
+mouseenter vs mouseover
+-----------------------
+mouseenter = pointer enters element
+mouseover  = pointer enters element/descendant
+
+mouseenter does NOT bubble.
+mouseover DOES bubble.
+
+
+mouseleave vs mouseout
+----------------------
+mouseleave = pointer leaves element
+mouseout   = pointer leaves element/descendant
+
+mouseleave does NOT bubble.
+mouseout DOES bubble.
+
+
+keydown vs keyup
+----------------
+keydown = key pressed
+keyup   = key released
+
+
+input vs change
+---------------
+input  = fires while value is changing
+change = fires when the change is committed
+
+
+DOMContentLoaded vs load
+------------------------
+DOMContentLoaded = DOM/HTML is ready
+load              = page resources are loaded
+
+
+focus vs blur
+-------------
+focus = element gets focus
+blur  = element loses focus
+
+
+preventDefault vs stopPropagation
+----------------------------------
+preventDefault()
+= stops the browser's default action
+
+stopPropagation()
+= stops event propagation
+
+
+==================================================
+EVENT FLOW
+==================================================
+
+When an event occurs, it can travel through 3 phases:
+
+1. CAPTURING PHASE
+2. TARGET PHASE
+3. BUBBLING PHASE
+
+Example:
+
+Grandparent
+    |
+  Parent
+    |
+  Child  <-- CLICK
+
+
+CAPTURING:
+
+Grandparent
+     ↓
+Parent
+     ↓
+Child
+
+
+TARGET:
+
+Child
+
+
+BUBBLING:
+
+Child
+     ↑
+Parent
+     ↑
+Grandparent
+
+
+==================================================
+EVENT LISTENER
+==================================================
+
+Basic syntax:
+
+element.addEventListener("event", function() {
+    // code
+});
+
+
+Example:
+
+button.addEventListener("click", function() {
+    console.log("Clicked");
+});
+
+
+==================================================
+IMPORTANT addEventListener OPTIONS
+==================================================
+
+Capture:
+
+element.addEventListener("click", handler, true);
+
+true = capturing phase
+
+
+Bubble:
+
+element.addEventListener("click", handler, false);
+
+false = bubbling phase
+
+Default:
+
+element.addEventListener("click", handler);
+
+Default is bubbling.
+
+
+Options object:
+
+element.addEventListener("click", handler, {
+    capture: true,
+    once: true
+});
+
+
+once: true
+= listener runs only once.
+
+
+==================================================
+EVENT TARGET vs CURRENTTARGET
+==================================================
+
+event.target
+-------------
+The actual element that started the event.
+
+event.currentTarget
+-------------------
+The element whose event listener is currently executing.
+
+
+Example:
+
+parent.addEventListener("click", function(event) {
+
+    console.log(event.target);
+    console.log(event.currentTarget);
+
+});
+
+
+If button is clicked:
+
+event.target
+= button
+
+event.currentTarget
+= parent
+
+
+==================================================
+EVENT DELEGATION
+==================================================
+
+Event delegation means:
+
+Instead of adding event listeners to many children,
+add ONE listener to their common parent.
+
+
+Example:
+
+<div id="menu">
+
+    <button id="home">Home</button>
+    <button id="about">About</button>
+    <button id="contact">Contact</button>
+
+</div>
+
+
+JavaScript:
+
+const menu = document.getElementById("menu");
+
+menu.addEventListener("click", function(event) {
+
+    if (event.target.id === "home") {
+        console.log("Home clicked");
+    }
+
+    if (event.target.id === "about") {
+        console.log("About clicked");
+    }
+
+    if (event.target.id === "contact") {
+        console.log("Contact clicked");
+    }
+
+});
+
+
+Why does this work?
+
+Because:
+
+Button
+   ↓
+click happens
+   ↓
+event bubbles
+   ↓
+Parent receives event
+   ↓
+event.target tells us which button was clicked
+
+
+Mental Model:
+
+MANY CHILDREN
+      ↓
+ONE PARENT LISTENER
+      ↓
+EVENT DELEGATION
+
+
+==================================================
+STOPPING EVENT PROPAGATION
+==================================================
+
+Use:
+
+event.stopPropagation();
+
+
+Example:
+
+child.addEventListener("click", function(event) {
+
+    console.log("Child");
+
+    event.stopPropagation();
+
+});
+
+
+This prevents the event from continuing to parent elements.
+
+
+==================================================
+STOP IMMEDIATE PROPAGATION
+==================================================
+
+Use:
+
+event.stopImmediatePropagation();
+
+
+Difference:
+
+stopPropagation()
+= stops event from moving to other elements.
+
+stopImmediatePropagation()
+= also stops other listeners on the same element.
+
+
+==================================================
+MOST IMPORTANT CONCEPT
+==================================================
+
+EVENT PROPAGATION:
+
+The browser moves ONE event through the DOM.
+
+It is NOT:
+
+Child calls Parent
+Child calls Grandparent
+
+It IS:
+
+Browser creates an event
+        ↓
+Browser follows DOM event path
+        ↓
+Capturing phase
+        ↓
+Target phase
+        ↓
+Bubbling phase
+
+
+FINAL MEMORY TRICK:
+
+CAPTURE = TOP → BOTTOM
+
+BUBBLE = BOTTOM → TOP
+
+DELEGATION = ONE PARENT HANDLES MANY CHILDREN

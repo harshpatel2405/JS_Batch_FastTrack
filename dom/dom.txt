@@ -65,19 +65,18 @@ remove -- removes a class
 ARRAY 
 -----
 HTMLCollection vs NodeList 
-Execution Context — used by scope, hoisting, this, functions
-Call Stack — used by function execution and synchronous code
-Memory Heap — used by objects, arrays, functions, memory allocation
-Web APIs — used by setTimeout, DOM events, Fetch, etc.
-Event Loop — used to manage asynchronous JavaScript
-Microtask Queue — used by Promises, async/await, queueMicrotask
-Macrotask Queue — used by setTimeout, setInterval, DOM events
-Hoisting — used by var, let, const, functions
-Scope & Scope Chain — used to determine variable accessibility
-Closures — used by callbacks, private variables, React patterns
-Lexical Environment — used by scope and closures
+
+Execution Context 
+Call Stack 
+Memory Heap 
+Web API 
+Event Loop 
+Microtask Queue 
+Macrotask Queue 
+Event - Capturing , Bubbling , Delegations 
 Events and its types 
 
 
 Event Listener 
 --------------
+
