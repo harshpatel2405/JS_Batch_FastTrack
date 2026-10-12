@@ -1,0 +1,61 @@
+Function 
+--------
+a block of code which can be used again and again 
+provides modularity work 
+1. Without return type  , with out args 
+2. Without return type , with args
+3. With return type , without args 
+4. without return type , without args 
+
+var -- function scope 
+let , const  -- block scope 
+
+HOF 
+---
+Higher Order Function 
+    a. function as an args 
+    b. returning function from a function 
+
+map(function) 
+filter 
+reduce 
+
+
+Js - Functions are first class citizens/objects 
+
+scopes 
+------
+let vs const vs var 
+
+1. function declaration and definition -- hoisting 
+hoisting -- calling the function before function definition
+
+function func_name(args)
+{
+    .....
+}
+
+2. Function Expression
+storing function in a variable 
+let ans = function calculator()
+{
+
+}
+
+ans()
+
+3. Anonymous Function 
+let ans = function()
+{
+
+}
+
+4. arrow function 
+(args) => 5  -> return 5;
+(args) => console.log("11") => return console.log("11")
+()=>{
+
+}
+
+closure 
+-------
