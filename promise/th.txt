@@ -1,0 +1,62 @@
+<==============================================>
+Promise.all()	        All fulfilled, or first rejection	All results or rejection
+
+const p1 = Promise.resolve("Task 1");
+const p2 = Promise.resolve("Task 2");
+const p3 = Promise.resolve("Task 3");
+
+Promise.all([p1, p2, p3])
+.then((result) => console.log(result))
+.catch((error) => console.log(error));
+
+// Output:
+// ["Task 1", "Task 2", "Task 3"]
+
+<==============================================>
+Promise.race()	        First settled promise	            First result or rejection
+
+const p1 = new Promise((resolve) => {
+    setTimeout(() => resolve("Task 1"), 3000);
+});
+
+const p2 = new Promise((resolve) => {
+    setTimeout(() => resolve("Task 2"), 1000);
+});
+
+Promise.race([p1, p2])
+.then((result) => console.log(result));
+
+// Output:
+// Task 2
+
+<==============================================>
+Promise.any()	        First fulfilled promise	            First success
+
+const p1 = Promise.reject("Error 1");
+const p2 = Promise.resolve("Success 2");
+const p3 = Promise.resolve("Success 3");
+
+Promise.any([p1, p2, p3])
+.then((result) => console.log(result))
+.catch((error) => console.log(error));
+
+// Output:
+// Success 2
+
+<==============================================>
+Promise.allSettled()	All promises settled	            All statuses and results
+
+const p1 = Promise.resolve("Success");
+const p2 = Promise.reject("Failed");
+const p3 = Promise.resolve("Completed");
+
+Promise.allSettled([p1, p2, p3])
+  .then((result) => console.log(result));
+
+// Output:
+// [
+//   { status: "fulfilled", value: "Success" },
+//   { status: "rejected", reason: "Failed" },
+//   { status: "fulfilled", value: "Completed" }
+// ]
+<==============================================>

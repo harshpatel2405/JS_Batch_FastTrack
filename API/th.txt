@@ -1,0 +1,14 @@
+API 
+---
+to carry data between different applications 
+
+
+HTTP - Hyper text transfer protocol
+
+GET 
+POST 
+PUT 
+PATCH 
+DELETE 
+
+fetch 

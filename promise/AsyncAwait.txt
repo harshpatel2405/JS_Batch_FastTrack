@@ -1,0 +1,239 @@
+# JAVASCRIPT – ASYNC & AWAIT PRACTICE QUESTIONS
+
+## MEDIUM LEVEL (4 QUESTIONS)
+
+### Q1. Fetch User Details
+Create an asynchronous function named `getUser()`.
+
+Requirements:
+1. Create a function that returns a Promise.
+2. Resolve the Promise after 2 seconds with the following object:
+
+   {
+     id: 101,
+     name: "Harsh",
+     email: "harsh@gmail.com"
+   }
+
+3. Use `async` and `await` to get the data.
+4. Display the user's name and email separately.
+
+Expected Output:
+Name: Harsh
+Email: harsh@gmail.com
+
+---
+
+### Q2. Product Price Calculator
+Create an asynchronous function named `getProductPrice()`.
+
+Requirements:
+1. Create a Promise that resolves after 2 seconds.
+2. Return the following product details:
+
+   {
+     name: "Laptop",
+     price: 50000
+   }
+
+3. Use `async/await` to get the product.
+4. Calculate and display the final price after adding 18% GST.
+
+Expected Output:
+Product: Laptop
+Original Price: 50000
+GST: 9000
+Final Price: 59000
+
+---
+
+### Q3. Check Student Result
+Create an asynchronous function named `checkResult()`.
+
+Requirements:
+1. Create a Promise that resolves after 2 seconds.
+2. Pass marks as an argument.
+3. If marks are 35 or above, resolve with "Pass".
+4. Otherwise, reject with "Fail".
+5. Use async/await and try/catch to handle the result.
+
+Expected Output:
+For marks = 75:
+Student Passed
+
+For marks = 25:
+Student Failed
+
+---
+
+### Q4. Sequential Task Execution
+Create three asynchronous functions:
+
+1. `loginUser()`
+2. `getUserProfile()`
+3. `getUserOrders()`
+
+Requirements:
+1. Each function should return a Promise.
+2. Add a delay of 1 second in each function.
+3. Call all three functions using async/await.
+4. Execute them sequentially.
+5. Display a message after each task completes.
+
+Expected Output:
+
+User Logged In
+User Profile Loaded
+User Orders Loaded
+All Tasks Completed
+
+---
+
+# HARD LEVEL (4 QUESTIONS)
+
+### Q5. Multiple API Calls and Combined Data
+Create three asynchronous functions:
+
+1. `getUser()` – Returns user details.
+2. `getProducts()` – Returns an array of products.
+3. `getOrders()` – Returns an array of orders.
+
+Requirements:
+1. Each function should return a Promise.
+2. Use different delays for each function.
+3. Create one main async function named `loadDashboard()`.
+4. Fetch all three results concurrently using `Promise.all()` with async/await.
+5. Display all the received data.
+
+Expected Output:
+
+User Details: { id: 1, name: "Harsh" }
+Products: [ "Laptop", "Mobile", "Tablet" ]
+Orders: [ "Order 101", "Order 102" ]
+
+Dashboard Loaded Successfully
+
+---
+
+### Q6. API Error Handling with Retry
+Create an asynchronous function named `fetchData()`.
+
+Requirements:
+1. Create a function that returns a Promise.
+2. The first two attempts should fail.
+3. The third attempt should succeed.
+4. Create a main async function named `getData()`.
+5. Use async/await and try/catch.
+6. Retry the request up to 3 times if it fails.
+7. Display the result when successful.
+8. If all attempts fail, display "Unable to fetch data".
+
+Expected Output:
+
+Attempt 1 Failed
+Attempt 2 Failed
+Attempt 3 Successful
+Data Fetched Successfully
+
+---
+
+### Q7. Restaurant Order Processing System
+Create an asynchronous restaurant order processing application.
+
+Requirements:
+
+Create the following asynchronous functions:
+
+1. `placeOrder()`
+   - Returns an order ID after 1 second.
+
+2. `prepareFood(orderId)`
+   - Takes order ID as an argument.
+   - Returns "Food Prepared" after 3 seconds.
+
+3. `assignDelivery(orderId)`
+   - Takes order ID as an argument.
+   - Returns "Delivery Partner Assigned" after 2 seconds.
+
+4. `deliverOrder(orderId)`
+   - Takes order ID as an argument.
+   - Returns "Order Delivered" after 4 seconds.
+
+Create a main function named `processOrder()`.
+
+Use async/await to execute the following workflow:
+
+Place Order → Prepare Food → Assign Delivery → Deliver Order
+
+Display the status after each operation.
+
+Expected Output:
+
+Order Placed: 101
+Food Prepared
+Delivery Partner Assigned
+Order Delivered
+Order Completed Successfully
+
+---
+
+### Q8. Student Dashboard with Multiple Requests
+Create a student dashboard using asynchronous functions.
+
+Create the following functions:
+
+1. `getStudentDetails()`
+   - Returns student name, ID and course.
+
+2. `getStudentMarks()`
+   - Returns marks for 5 subjects.
+
+3. `getStudentAttendance()`
+   - Returns attendance percentage.
+
+4. `getStudentFees()`
+   - Returns total fees and paid fees.
+
+Requirements:
+1. Each function should return a Promise.
+2. Give each Promise a different delay.
+3. Create an async function named `loadStudentDashboard()`.
+4. Fetch all four results concurrently using `Promise.all()`.
+5. Calculate total marks and percentage.
+6. Calculate remaining fees.
+7. Display all student information in a properly formatted dashboard.
+8. Handle errors using try/catch.
+
+Expected Output:
+
+STUDENT DASHBOARD
+
+Name: Harsh
+Student ID: 101
+Course: Full Stack Development
+
+Total Marks: 425 / 500
+Percentage: 85%
+
+Attendance: 90%
+
+Total Fees: 50000
+Paid Fees: 35000
+Remaining Fees: 15000
+
+Dashboard Loaded Successfully
+
+---
+
+# CONCEPTS COVERED
+
+| Question | Main Concept |
+|---|---|
+| Q1 | Basic async/await |
+| Q2 | Await + calculations |
+| Q3 | try/catch + rejected Promise |
+| Q4 | Sequential execution |
+| Q5 | Promise.all + concurrent execution |
+| Q6 | Error handling + retry |
+| Q7 | Real-world sequential workflow |
+| Q8 | Multiple API calls + data processing |
