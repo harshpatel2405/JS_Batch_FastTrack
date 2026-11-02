@@ -1,0 +1,54 @@
+json 
+----
+Javascript Object notation 
+text based 
+
+Object
+-------
+
+const student = 
+{
+    name  : "John",
+    surname : "Doe"
+}
+
+1. JSON.stringify --> object to json 
+2. JSON.parse     --> json to object 
+3. response.json  --> read the json and then convert it into object 
+
+
+<==================================================================>
+array methods 
+--------------
+map 
+filter 
+reduced
+some 
+every 
+forEach 
+for..of 
+for..in
+
+<===============================================>
+regex
+-----
+
+
+closure
+-------
+
+
+function outer()
+{
+    let x = 10;
+
+    function inner()
+    {
+        console.log(x)
+    }
+
+    return inner
+}
+
+let ans = outer()
+ans()
